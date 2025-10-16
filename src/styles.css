@@ -107,6 +107,12 @@ h1 {
   font-size: 2rem;
 }
 
+.error {
+  color: red;
+  font-size: 12px;
+  line-height: 14px;
+}
+
 /*
   Round the corners for the 4 cells at the very corners of
   the game board
