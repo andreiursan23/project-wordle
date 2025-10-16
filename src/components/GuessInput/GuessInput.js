@@ -2,7 +2,6 @@ import React from 'react';
 
 function GuessInput() {
   const [guess, setGuess] = React.useState('');
-  const [error, setError] = React.useState('');
 
   const handleChange = (e) => {
     const nextGuess = e.target.value.toUpperCase();
@@ -18,7 +17,6 @@ function GuessInput() {
     console.info({ guess });
 
     setGuess('');
-    setError('');
   }
 
 
