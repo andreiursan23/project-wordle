@@ -15,11 +15,6 @@ function GuessInput() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (guess.length !== 5) {
-      setError('Please input a 5 letters word');
-      return;
-    }
-
     console.info({ guess });
 
     setGuess('');
@@ -30,8 +25,17 @@ function GuessInput() {
   return (
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
       <label htmlFor="guess-input">Enter guess:</label>
-      <input id="guess-input" type="text" required minLength={5} maxLength={5} value={guess} onChange={handleChange} />
-      {error ? <span className="error">{error}</span> : null}
+      <input
+        id="guess-input"
+        type="text"
+        required
+        minLength={5}
+        maxLength={5}
+        pattern="[a-zA-Z]{5}"
+        title="5 letter word"
+        value={guess}
+        onChange={handleChange} 
+      />
     </form>
   );
 }
