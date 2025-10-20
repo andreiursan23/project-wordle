@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { WORDS } from '../../data';
 import { sample } from '../../utils';
 
@@ -15,7 +16,12 @@ function Game() {
   const [guessResults, setGuessResults] = React.useState([]);
 
   const handleAddGuess = (guess) => {
-    setGuessResults([...guessResults, { id: crypto.randomUUID(), label: guess }])
+    if (guessResults.length >= NUM_OF_GUESSES_ALLOWED) {
+      window.alert('Sorry, you are out of tries :(');
+      return;
+    }
+
+    setGuessResults([...guessResults,  guess ]);
   }
 
   return (
