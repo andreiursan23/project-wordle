@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({ handleAddGuess }) {
+function GuessInput({ handleAddGuess, gameState }) {
   const [tentativeGuess, setTentativeGuess] = React.useState('');
 
   const handleChange = (e) => {
@@ -14,11 +14,10 @@ function GuessInput({ handleAddGuess }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    handleAddGuess(tentativeGuess)
+    handleAddGuess(tentativeGuess);
 
     setTentativeGuess('');
   }
-
 
   return (
     <form className="guess-input-wrapper" onSubmit={handleSubmit}>
@@ -31,8 +30,9 @@ function GuessInput({ handleAddGuess }) {
         maxLength={5}
         pattern="[a-zA-Z]{5}"
         title="5 letter word"
+        disabled={gameState !== 'in-progress' ? true : false}
         value={tentativeGuess}
-        onChange={handleChange} 
+        onChange={handleChange}
       />
     </form>
   );
